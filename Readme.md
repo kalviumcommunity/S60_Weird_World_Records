@@ -13,3 +13,5 @@ This project consists of weird world records that you haven't heard about till n
 * Silly World Records🤭😂
 
 * Worst World Records🤢
+
+Deployed Link : https://s60-weird-world-records.onrender.com/
