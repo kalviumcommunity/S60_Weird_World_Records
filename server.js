@@ -1,9 +1,8 @@
+
 const {modelVar, connectVar} = require('./mongo')
 const express = require('express')
 const server = express();
-
 console.log('Checking')
-
 function checkStatus(){
     return modelVar.db.readyState === 1;
 }
@@ -13,8 +12,7 @@ server.get('/', (request, response) => {
     let verifyConnc = connectStatus ? 'Connected Successfully' : 'Not connected' 
     response.send(verifyConnc)
 })
-
 server.listen(3001, () => {
     connectVar()
-    console.log('Created a server.js file, coded in it and pushing it')
-})
+  console.log("working")})
+
