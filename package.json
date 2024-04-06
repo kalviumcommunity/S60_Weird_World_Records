@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node server.js",
     "start": "nodemon index.js"
-  },
+  "description": "![Weird World Record](https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Guinness_World_Records_logo.svg/1200px-Guinness_World_Records_logo.svg.png)",
+  "main": "server.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,4 +18,9 @@
   },
   "keywords": [],
   "description": ""
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.0"
+  }
 }
