@@ -2,10 +2,14 @@
 const {modelVar, connectVar} = require('./mongo')
 const express = require('express')
 const server = express();
+
+const routes = require('./routes')
 console.log('Checking')
 function checkStatus(){
     return modelVar.db.readyState === 1;
 }
+
+server.use('/', routes)
 
 server.get('/', (request, response) => {
     const connectStatus = checkStatus()
