@@ -1,7 +1,10 @@
 const express = require('express')
 const server = express();
+const routes = require('./routes')
 
 console.log('Checking')
+
+server.use('/', routes)
 
 server.get('/', (request, response) => {
     response.send('Hello World')
