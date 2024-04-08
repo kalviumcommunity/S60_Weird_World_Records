@@ -14,4 +14,6 @@ This project consists of weird world records that you haven't heard about till n
 
 * Worst World Records🤢
 
-Deployed Link : https://s60-weird-world-records.onrender.com/
+Render.com Deployed Link : https://s60-weird-world-records.onrender.com/
+
+Client Deployed Link : https://6613bbb6b160547cbc603f83--stately-cendol-b21213.netlify.app/
