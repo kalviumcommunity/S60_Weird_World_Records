@@ -1,8 +1,11 @@
+const {modelVar} = require('./mongo')
 const express = require('express')
 const app = express()
 
 app.get('/get', (req, res) => {
-    res.send('Get request successful')
+    modelVar.find({})
+    .then((arrOfdata) => {res.json({arrOfdata})})
+    .catch((error) => {res.json({error})})
 })
 
 app.post('/post', (req, res) => {
