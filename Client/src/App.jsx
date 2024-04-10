@@ -1,12 +1,16 @@
 import './App.css'
-// import data from './Components/dummydata'
+import {Routes, Route} from 'react-router-dom'
 import FetchData from './Components/DataFetching'
+import InsertData from './Components/InsertData'
 
 function App() {
 
   return (
     <div>
-      <FetchData/>
+        <Routes>
+          <Route path='/' element={<FetchData/>}></Route>
+          <Route path='/insert' element={<InsertData/>}></Route>
+        </Routes>
     </div>
   )
 }
