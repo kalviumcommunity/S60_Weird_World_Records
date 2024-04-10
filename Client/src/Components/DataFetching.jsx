@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function FetchData(){
 
@@ -19,22 +20,27 @@ function FetchData(){
     },[])
 
     return(
-        <>
-        {
-            record.map((item) => {
-                console.log("here",record)
-                return(
-                    <div key={item._id}>
-                    <h1>Record Category : {item.Record_category}</h1>
-                    <h2>Name : {item.Record_Name}</h2>
-                    <h3>Holder Name : {item.Record_Holder_Name}</h3>
-                    <img src={item.Record_Picture} alt="img" />
-                    <p>Details : {item.Record_Details}</p>
-                </div>
-                )
+        <div>
+            <Link to='./insert'>
+                <button>Insert</button>
+            </Link>
+            <div>
+                {
+                record.map((item) => {
+                    console.log("here",record)
+                    return(
+                        <div key={item._id}>
+                        <h1>Record Category : {item.Record_category}</h1>
+                        <h2>Name : {item.Record_Name}</h2>
+                        <h3>Holder Name : {item.Record_Holder_Name}</h3>
+                        <img src={item.Record_Picture} alt="img" />
+                        <p>Details : {item.Record_Details}</p>
+                    </div>
+                    )
                 })
-        }
-        </>
+            }
+            </div>
+        </div>
     )
 }
 

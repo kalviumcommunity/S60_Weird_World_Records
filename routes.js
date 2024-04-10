@@ -9,7 +9,9 @@ app.get('/get', (req, res) => {
 })
 
 app.post('/post', (req, res) => {
-    res.status(201).send("Posted successfully")
+    modelVar.create(req.body)
+    .then(elements => res.json(elements))
+    .catch(err => res.json(err))
 })
 
 app.put('/put/:id', (req, res) => {
