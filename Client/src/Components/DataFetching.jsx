@@ -10,7 +10,7 @@ function FetchData(){
         const fetching = async() => {
             try{
                 const recordData = await axios.get("http://localhost:3001/get");
-                console.log(recordData.data.arrOfdata)
+                // console.log(recordData.data.arrOfdata)
                 setRecord(recordData.data.arrOfdata)
             }catch(error){
                 console.log("error", error)
@@ -19,6 +19,16 @@ function FetchData(){
         fetching();
     },[])
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:3001/delete/${id}`);
+            setRecord(prevRecords => prevRecords.filter(item => item._id !== id));
+            console.log("Data deleted successfully");
+        } catch(error) {
+            console.log("Error deleting data:", error);
+        }
+    };
+    
     return(
         <div>
             <Link to='./insert'>
@@ -27,14 +37,18 @@ function FetchData(){
             <div>
                 {
                 record.map((item) => {
-                    console.log("here",record)
+                    // console.log("here",record)
                     return(
                         <div key={item._id}>
-                        <h1>Record Category : {item.Record_category}</h1>
-                        <h2>Name : {item.Record_Name}</h2>
-                        <h3>Holder Name : {item.Record_Holder_Name}</h3>
-                        <img src={item.Record_Picture} alt="img" />
-                        <p>Details : {item.Record_Details}</p>
+                            <h1>Record Category : {item.Record_category}</h1>
+                            <h2>Name : {item.Record_Name}</h2>
+                            <h3>Holder Name : {item.Record_Holder_Name}</h3>
+                            <img src={item.Record_Picture} alt="img" />
+                            <p>Details : {item.Record_Details}</p>
+                            <Link to={`/Update/${item._id}`}>
+                                <button>Update</button>
+                            </Link>
+                            <button onClick={() => handleDelete(item._id)}>Delete</button>
                     </div>
                     )
                 })
