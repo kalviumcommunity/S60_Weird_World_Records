@@ -14,12 +14,30 @@ app.post('/post', (req, res) => {
     .catch(err => res.json(err))
 })
 
+app.get('/getid/:id', (req, res) => {
+    const id = req.params.id
+    modelVar.findById({_id:id})
+    .then(record => res.json(record))
+    .catch(error => console.log(error))
+})
+
 app.put('/put/:id', (req, res) => {
-    res.send("Updated successfully !!")
+    const id = req.params.id
+    modelVar.findByIdAndUpdate({_id:id}, {
+        Record_category : req.body.Record_category, 
+        Record_Name : req.body.Record_Name, 
+        Record_Holder_Name : req.body.Record_Holder_Name, 
+        Record_Picture : req.body.Record_Picture, 
+        Record_Details : req.body.Record_Details})
+    .then(record => res.send("record"))
+    .catch(error => console.log(error))
 })
 
 app.delete('/delete/:id', (req, res) => {
-    res.send("Deleted data.")
+    const id = req.params.id
+    modelVar.findByIdAndDelete({_id:id})
+    .then(record => res.json(record))
+    .catch(error => res.json({error}))
 })
 
 module.exports = app;
