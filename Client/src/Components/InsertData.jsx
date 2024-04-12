@@ -42,14 +42,18 @@ function InsertData(){
     }
 
     return(
+        <div>
+            <div className="out">
         <form onSubmit={handleSubmit}>
-            <input type="text" name="Category" placeholder="Record Category" onChange={handleCategory}/><br/>
-            <input type="text" name="Name" placeholder="Record Name" onChange={handleName}/><br/>
-            <input type="text" name="HolderName" placeholder="Record Holder Name" onChange={handleHolder}/><br/>
-            <input type="text" name="Image" placeholder="Record Image" onChange={handleImage}/><br/>
-            <textarea type="text" name="Details" placeholder="Record Details" onChange={handleDetails}></textarea><br/>
-            <button>Insert Data</button>
+            <input type="text" name="Category" placeholder="Record Category" onChange={handleCategory} required/><br/>
+            <input type="text" name="Name" placeholder="Record Name" onChange={handleName} required/><br/>
+            <input type="text" name="HolderName" placeholder="Record Holder Name" onChange={handleHolder} required/><br/>
+            <input type="text" name="Image" placeholder="Record Image" onChange={handleImage} required/><br/>
+            <textarea type="text" name="Details" placeholder="Record Details" onChange={handleDetails} required></textarea><br/>
+            <button className="insert">Insert Data</button>
         </form>
+        </div>
+        </div>
     )
 }
 

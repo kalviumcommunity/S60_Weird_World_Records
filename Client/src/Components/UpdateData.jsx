@@ -60,14 +60,16 @@ function UpdateData(){
     }
 
     return(
+        <div className="out">
         <form onSubmit={handleSubmit}>
-            <input type="text" name="Category" placeholder="Record Category" value={Record_category} onChange={handleCategory}/><br/>
-            <input type="text" name="Name" placeholder="Record Name" value={Record_Name} onChange={handleName}/><br/>
-            <input type="text" name="HolderName" placeholder="Record Holder Name" value={Record_Holder_Name} onChange={handleHolder}/><br/>
-            <input type="text" name="Image" placeholder="Record Image" value={Record_Picture} onChange={handleImage}/><br/>
-            <textarea type="text" name="Details" placeholder="Record Details" value={Record_Details} onChange={handleDetails}></textarea><br/>
-            <button>Update Data</button>
+            <input type="text" name="Category" placeholder="Record Category" value={Record_category} onChange={handleCategory} required/><br/>
+            <input type="text" name="Name" placeholder="Record Name" value={Record_Name} onChange={handleName} required/><br/>
+            <input type="text" name="HolderName" placeholder="Record Holder Name" value={Record_Holder_Name} onChange={handleHolder} required/><br/>
+            <input type="text" name="Image" placeholder="Record Image" value={Record_Picture} onChange={handleImage} required/><br/>
+            <textarea type="text" name="Details" placeholder="Record Details" value={Record_Details} onChange={handleDetails} required></textarea><br/>
+            <button className="update">Update Data</button>
         </form>
+        </div>
     )
 }
 
