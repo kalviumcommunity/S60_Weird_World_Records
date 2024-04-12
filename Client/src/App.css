@@ -5,17 +5,54 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.img{
+  width: 60%;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.out{
+  background-color: #07a0a7;
+  border-radius: 10px;
+  padding: 100px 200px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.out input, textarea{
+  margin-top: 30px;
+  width: 400px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.out textarea{
+  height: 100px;
+}
+
+.insert, .update{
+  margin-top: 30px;
+}
+
+.update, .Update{
+  background-color: rgb(255, 208, 0);
+}
+
+.delete{
+  background-color: red;
+}
+
+.Insert{
+  background-color: green;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-around;
+}
+
+::placeholder{
+  color: white;
 }
 
 @keyframes logo-spin {

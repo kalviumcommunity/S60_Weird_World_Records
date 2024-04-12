@@ -32,7 +32,7 @@ function FetchData(){
     return(
         <div>
             <Link to='./insert'>
-                <button>Insert</button>
+                <button className='Insert'>Insert</button>
             </Link>
             <div>
                 {
@@ -43,12 +43,14 @@ function FetchData(){
                             <h1>Record Category : {item.Record_category}</h1>
                             <h2>Name : {item.Record_Name}</h2>
                             <h3>Holder Name : {item.Record_Holder_Name}</h3>
-                            <img src={item.Record_Picture} alt="img" />
+                            <img className='img' src={item.Record_Picture} alt="img" />
                             <p>Details : {item.Record_Details}</p>
-                            <Link to={`/Update/${item._id}`}>
-                                <button>Update</button>
-                            </Link>
-                            <button onClick={() => handleDelete(item._id)}>Delete</button>
+                            <div className='btns'>
+                                <Link to={`/Update/${item._id}`}>
+                                    <button className='Update'>Update</button>
+                                </Link>
+                                <button onClick={() => handleDelete(item._id)} className='delete'>Delete</button>
+                            </div>
                     </div>
                     )
                 })
