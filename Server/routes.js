@@ -1,4 +1,4 @@
-const {modelVar} = require('./mongo')
+const {modelVar, usermodelVar} = require('./mongo')
 const express = require('express')
 const app = express()
 
@@ -45,6 +45,29 @@ app.delete('/delete/:id', (req, res) => {
     modelVar.findByIdAndDelete({_id:id})
     .then(record => res.json(record))
     .catch(error => res.json({error}))
+})
+
+// users
+app.post('/signup', (req, res) => {
+    usermodelVar.create(req.body)
+    .then(output => res.json(output))
+    .catch(error => res.json(error))
+})
+
+app.post("/login", (req, res) => {
+    const {email, password} = req.body
+    usermodelVar.findOne({email : email})
+    .then(user => {
+        if(user){
+            if(user.password === password){
+                res.json("Login successful")
+            }else{
+                res.json("User detail did not match")
+            }
+        }else{
+            res.json("login failed")
+        }
+    })
 })
 
 module.exports = app;
