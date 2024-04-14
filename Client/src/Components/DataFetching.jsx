@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function FetchData(){
 
     const [record, setRecord] = useState([])
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetching = async() => {
@@ -28,12 +29,19 @@ function FetchData(){
             console.log("Error deleting data:", error);
         }
     };
+
+    const Logout = () => {
+        document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        navigate("/");
+    }
     
     return(
         <div>
             <Link to='./insert'>
                 <button className='Insert'>Insert</button>
             </Link>
+            <button onClick={Logout}>Logout</button>
             <div>
                 {
                 record.map((item) => {

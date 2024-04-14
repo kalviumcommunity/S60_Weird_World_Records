@@ -51,7 +51,7 @@
   justify-content: space-around;
 }
 
-::placeholder{
+.out ::placeholder{
   color: white;
 }
 

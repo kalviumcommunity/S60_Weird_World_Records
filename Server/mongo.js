@@ -22,5 +22,14 @@ const newmongo = mongodb.Schema({
 })
 console.log(recordData)
 
+// users
+const userSchema = mongodb.Schema({
+    username : String,
+    email : String,
+    password : String
+})
+
 const collection = mongodb.model('newdata', newmongo)
-module.exports = {modelVar : collection, connectVar : connecting}
+const usercollection = mongodb.model('users database', userSchema)
+
+module.exports = {modelVar : collection, connectVar : connecting, usermodelVar : usercollection}
