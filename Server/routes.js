@@ -1,6 +1,12 @@
 const {modelVar, usermodelVar} = require('./mongo')
 const express = require('express')
+const jwt = require("jsonwebtoken")
+const dotenv = require("dotenv")
+// const cookie = require("cookie-parser")
+
 const app = express()
+dotenv.config()
+// app.use(cookie())
 
 const Schema = require("./Schema")
 
@@ -60,7 +66,10 @@ app.post("/login", (req, res) => {
     .then(user => {
         if(user){
             if(user.password === password){
-                res.json("Login successful")
+                const webToken= jwt.sign({email : user.email, password : user.password}, process.env.PASSWORD)
+                // res.cookie("webToken", webToken)
+                res.json({success : "Login successful", webToken : webToken})
+                console.log(webToken)
             }else{
                 res.json("User detail did not match")
             }
