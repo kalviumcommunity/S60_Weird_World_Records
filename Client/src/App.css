@@ -54,13 +54,13 @@
 
 @media screen and (min-width: 768px) {
   .out {
-    flex-direction: row; /* Revert to horizontal layout for larger screens */
-    padding: 80px; /* Restore original padding */
+    flex-direction: row;
+    padding: 80px; 
   }
 
   .out input,
   .out textarea {
-    width: 300px; /* Adjust width for larger screens */
+    width: 300px;
   }
 }
 
