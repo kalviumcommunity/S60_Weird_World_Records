@@ -5,6 +5,7 @@ import InsertData from './Components/InsertData'
 import UpdateData from './Components/UpdateData'
 import Signup from './Components/Signup'
 import Login from './Components/Login'
+import Search from './Components/Search'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/record' element={<FetchData/>}></Route>
           <Route path='/insert' element={<InsertData/>}></Route>
           <Route path='/Update/:id' element={<UpdateData/>}></Route>
+          <Route path='/search' element={<Search/>}></Route>
         </Routes>
     </div>
   )

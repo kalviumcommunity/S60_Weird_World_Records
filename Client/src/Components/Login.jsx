@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import workspaceImage from "../assets/Workspace.png"
 
 function Login(){
 
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('')
+    const [username, setUserName] = useState("")
 
     const handleEmail = (event) => {
         setEmail(event.target.value)
@@ -17,6 +19,10 @@ function Login(){
         setPassword(event.target.value)
     }
 
+    const handleUserName = (event) => {
+        setUserName(event.target.value)
+    }
+
     const handleError = () => {
         setErrorMessage("Incorrect user detail")
     }
@@ -24,13 +30,14 @@ function Login(){
     const handleLogin = (event) => {
         event.preventDefault()
 
-        axios.post("http://localhost:3001/login", { email, password})
+        axios.post("http://localhost:3001/login", { email, password, username })
         .then(output => {
             console.log(output)
-            if(output.data === "Login successful"){
+            if(output.data.success === "Login successful"){
                 navigate("/record")
                 document.cookie = `email = ${email}; expires Fri, 31 Dec 9999 23:59:59 GMT`
-                document.cookie = `password = ${password}; expires Fri, 31 Dec 9999 23:59:59 GMT`
+                document.cookie = `password = ${output.data.webToken}; expires Fri, 31 Dec 9999 23:59:59 GMT`
+                document.cookie = `addedby = ${username}; expires Fri, 31 Dec 9999 23:59:59 GMT`
             }else{
                 handleError()
             }
@@ -43,12 +50,21 @@ function Login(){
 
     return(
         <div>
-            <form onSubmit={handleLogin}>
-                <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
-                <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
-                <button required >Login</button>
-            </form>
-            {errorMessage && <p>{errorMessage}</p>}
+            <div className="out area log">
+                <div>
+                    <h1>Welcome back !!</h1>
+                    <form onSubmit={handleLogin}>
+                        <input type="text" placeholder="Username" onChange={handleUserName} required /><br />
+                        <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
+                        <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
+                        <button className="login">Login</button>
+                    </form>
+                    {errorMessage && <p>{errorMessage}</p>}
+                </div>
+                <div>
+                    <img className="wimg" src={workspaceImage} alt="image" />
+                </div>
+            </div>
         </div>
     )
 }

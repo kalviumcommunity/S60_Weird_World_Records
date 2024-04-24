@@ -5,19 +5,41 @@
   text-align: center;
 }
 
+*{
+  color: black;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #371802;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  padding: 0px;
+  z-index: 1000;
+}
+
 .img{
   width: 60%;
 }
 
 .out{
-  background-color: #07a0a7;
+  background-color: #e2bcaa;
   border-radius: 10px;
-  padding: 100px 200px;
+  padding: 80px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
 }
 
 .out input, textarea{
   margin-top: 30px;
-  width: 400px;
+  width: 500px;
   height: 40px;
   border-radius: 10px;
   border: none;
@@ -30,29 +52,84 @@
   height: 100px;
 }
 
-.insert, .update{
+@media screen and (min-width: 768px) {
+  .out {
+    flex-direction: row;
+    padding: 80px; 
+  }
+
+  .out input,
+  .out textarea {
+    width: 300px;
+  }
+}
+
+.insert, .update, .login, .signup{
   margin-top: 30px;
 }
 
 .update, .Update{
-  background-color: rgb(255, 208, 0);
+  background-color: #b56866;
+  color: white;
 }
 
 .delete{
-  background-color: red;
+  background-color: #69020c;
+  color: white;
 }
 
-.Insert{
+.insert{
   background-color: green;
+  width: 100px;
+}
+
+.Logout, .Insert, .Search{
+  border-radius: 0px;
+  background-color: #371802;
+  color: white;
+}
+
+.Search{
+  background-color: rgb(218, 216, 216);
+  width: 300px;
+  color: black;
 }
 
 .btns{
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .out ::placeholder{
   color: white;
+}
+
+.wimg{
+  height: 400px;
+}
+
+.in{
+  padding: 70px 150px;
+}
+
+.options{
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.seperate{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.items{
+  background-color: #e2bcaa;
+  padding: 0px 50px 30px 50px;
+  border-radius: 10px;
 }
 
 @keyframes logo-spin {
@@ -70,10 +147,17 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
+@media (max-width: 540px){
+  .area{
+    flex-direction: column;
+    padding: 10px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .area input, textarea{
+    width: 350px;
+  }
+
+  .log{
+    padding: 0px;
+  }
 }
