@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
+import workspaceImage from "../assets/Workspace.png"
 
 function Signup(){
 
@@ -25,33 +26,34 @@ function Signup(){
         event.preventDefault()
         navigate("/record")
         axios.post("http://localhost:3001/signup", {username, email, password})
-        .then(output => console.log(output))
+        .then(output => {
+            console.log(output)
+            document.cookie = `email = ${email}; expires Fri, 31 Dec 9999 23:59:59 GMT`
+            document.cookie = `addedby = ${username}; expires Fri, 31 Dec 9999 23:59:59 GMT`
+        })
         .catch(error => console.log(error))
-
-        // const Userdata = {
-        //     username : username,
-        //     email : email,
-        //     password : password
-        // }
-
-        // const Jsondata = JSON.stringify(Userdata)
-
-        // document.cookie = `Userdata = ${Jsondata} expires=Fri, 31 Dec 9999 23:59:59 GMT`
     }
 
     return(
         <div>
-            <form onSubmit={handleSignup}>
-                <input type="text" placeholder="Username" onChange={handleName} required /><br />
-                <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
-                <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
-                    <button onSubmit={handleSignup}>Sign Up</button>
-                <br />
-            </form>
-            <p>If you already have an account</p>
-            <Link to="./login">
-                <button>Login</button>
-            </Link>
+            <div className="out area">
+                <div>
+                    <h1>Hello, Welcome</h1>
+                    <form onSubmit={handleSignup}>
+                        <input type="text" placeholder="Username" onChange={handleName} required /><br />
+                        <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
+                        <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
+                        <button className="signup" onSubmit={handleSignup}>Sign Up</button><br />
+                    </form>
+                    <p>If you already have an account</p>
+                    <Link to="./login">
+                        <button>Login</button>
+                    </Link>
+                </div>
+                <div>
+                    <img className="wimg" src={workspaceImage} alt="image" />
+                </div>
+            </div>
         </div>
     )
 }

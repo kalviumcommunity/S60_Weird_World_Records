@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Logo from "../assets/Logo.png"
 
 function FetchData(){
 
@@ -33,36 +34,40 @@ function FetchData(){
     const Logout = () => {
         document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
         document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        document.cookie = "addedby=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
         navigate("/");
     }
     
     return(
         <div>
-            <Link to='./insert'>
-                <button className='Insert'>Insert</button>
-            </Link>
-            <button onClick={Logout}>Logout</button>
-            <div>
+            <nav className='navbar'>
+                <img height="60px" width="200px" src={Logo} alt="" />
+                <button onClick={() => navigate("/insert")} className='Insert'>Insert</button>
+                <button onClick={() => navigate("/search")} className='Search'>search</button>
+                <button onClick={Logout} className='Logout'>Logout</button>
+            </nav>
+            <div className="seperate">
                 {
                 record.map((item) => {
                     // console.log("here",record)
                     return(
-                        <div key={item._id}>
-                            <h1>Record Category : {item.Record_category}</h1>
-                            <h2>Name : {item.Record_Name}</h2>
-                            <h3>Holder Name : {item.Record_Holder_Name}</h3>
+                        <div className='items' key={item._id}>
+                            <h2>{item.Record_category}</h2>
+                            <h2>{item.Record_Name}</h2>
+                            <h3>Record Holder Name : {item.Record_Holder_Name}</h3>
                             <img className='img' src={item.Record_Picture} alt="img" />
-                            <p>Details : {item.Record_Details}</p>
+                            <p><b>Details :</b>  {item.Record_Details}</p>
+                            {/* <p>{item.Added_by}</p> */}
                             <div className='btns'>
                                 <Link to={`/Update/${item._id}`}>
                                     <button className='Update'>Update</button>
                                 </Link>
                                 <button onClick={() => handleDelete(item._id)} className='delete'>Delete</button>
                             </div>
-                    </div>
+                        </div>
                     )
                 })
-            }
+                }
             </div>
         </div>
     )

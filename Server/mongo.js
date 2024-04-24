@@ -18,7 +18,8 @@ const newmongo = mongodb.Schema({
     Record_Name : String,
     Record_Holder_Name : String,
     Record_Picture : String,
-    Record_Details : String
+    Record_Details : String,
+    Added_by : String
 })
 console.log(recordData)
 

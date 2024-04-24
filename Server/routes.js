@@ -60,12 +60,18 @@ app.post('/signup', (req, res) => {
     .catch(error => res.json(error))
 })
 
+app.get("/signup", (req, res) => {
+    usermodelVar.find({})
+    .then((arrOfUsers) => {res.json({arrOfUsers})})
+    .catch((error) => {res.json({error})})
+})
+
 app.post("/login", (req, res) => {
-    const {email, password} = req.body
+    const {email, password, username} = req.body
     usermodelVar.findOne({email : email})
     .then(user => {
         if(user){
-            if(user.password === password){
+            if(user.password === password && user.username === username){
                 const webToken= jwt.sign({email : user.email, password : user.password}, process.env.PASSWORD)
                 // res.cookie("webToken", webToken)
                 res.json({success : "Login successful", webToken : webToken})
