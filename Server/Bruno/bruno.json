@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "Bruno",
+  "name": "Record_Testing",
   "type": "collection",
   "ignore": [
     "node_modules",
