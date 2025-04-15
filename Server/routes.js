@@ -2,6 +2,7 @@ const {modelVar, usermodelVar} = require('./mongo')
 const express = require('express')
 const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv")
+const bcrypt = require("bcryptjs")
 // const cookie = require("cookie-parser")
 
 const app = express()
@@ -61,8 +62,14 @@ app.delete('/delete/:id', (req, res) => {
 // USERS
 
 // Signup Post
-app.post('/signup', (req, res) => {
-    usermodelVar.create(req.body)
+app.post('/signup', async (req, res) => {
+    const {username, email, password} = req.body;
+    const hashPassword = await bcrypt.hash(password, 10)
+    usermodelVar.create({
+        username,
+        email,
+        password : hashPassword
+    })
     .then(output => res.json(output))
     .catch(error => res.json(error))
 })
@@ -75,23 +82,27 @@ app.get("/signup", (req, res) => {
 })
 
 // Login Post
-app.post("/login", (req, res) => {
-    const {email, password, username} = req.body
-    usermodelVar.findOne({email : email})
-    .then(user => {
+app.post("/login", async (req, res) => {
+    const { email, password, username } = req.body;
+
+    try{
+        const user = await usermodelVar.findOne({ email: email });
         if(user){
-            if(user.password === password && user.username === username){
-                const webToken= jwt.sign({email : user.email, password : user.password}, process.env.PASSWORD)
-                // res.cookie("webToken", webToken)
-                res.json({success : "Login successful", webToken : webToken})
-                console.log(webToken)
+            const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+            if(isPasswordMatch && user.username === username){
+                const webToken = jwt.sign({ email: user.email }, process.env.PASSWORD);
+                res.json({ success: "Login successful", webToken: webToken });
+                console.log(webToken);
             }else{
-                res.json("User detail did not match")
+                res.json("User detail did not match");
             }
         }else{
-            res.json("login failed")
+            res.json("Login failed");
         }
-    })
-})
+    }catch(error){
+        res.json({ error: error.message });
+    }
+});
 
 module.exports = app;
