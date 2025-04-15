@@ -10,12 +10,14 @@ dotenv.config()
 
 const Schema = require("./Schema")
 
+// Get Record
 app.get('/get', (req, res) => {
     modelVar.find({})
     .then((arrOfdata) => {res.json({arrOfdata})})
     .catch((error) => {res.json({error})})
 })
 
+// Post Record
 app.post('/post', (req, res) => {
     const {error, value} = Schema.validate(req.body)
     if(error){
@@ -27,6 +29,7 @@ app.post('/post', (req, res) => {
     .catch(err => res.json(err))
 })
 
+// Get Record By Id
 app.get('/getid/:id', (req, res) => {
     const id = req.params.id
     modelVar.findById({_id:id})
@@ -34,6 +37,7 @@ app.get('/getid/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// Update Record
 app.put('/put/:id', (req, res) => {
     const id = req.params.id
     modelVar.findByIdAndUpdate({_id:id}, {
@@ -46,6 +50,7 @@ app.put('/put/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// Delete Record
 app.delete('/delete/:id', (req, res) => {
     const id = req.params.id
     modelVar.findByIdAndDelete({_id:id})
@@ -53,19 +58,23 @@ app.delete('/delete/:id', (req, res) => {
     .catch(error => res.json({error}))
 })
 
-// users
+// USERS
+
+// Signup Post
 app.post('/signup', (req, res) => {
     usermodelVar.create(req.body)
     .then(output => res.json(output))
     .catch(error => res.json(error))
 })
 
+// Get Users
 app.get("/signup", (req, res) => {
     usermodelVar.find({})
     .then((arrOfUsers) => {res.json({arrOfUsers})})
     .catch((error) => {res.json({error})})
 })
 
+// Login Post
 app.post("/login", (req, res) => {
     const {email, password, username} = req.body
     usermodelVar.findOne({email : email})
