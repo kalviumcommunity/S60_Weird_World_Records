@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function InsertData(){
 
@@ -58,6 +59,7 @@ function InsertData(){
 
     return(
         <div>
+            <Navbar/>
             <div className="out in">
                 <form onSubmit={handleSubmit}>
                     <h2>The data is added by {Added_by}</h2>

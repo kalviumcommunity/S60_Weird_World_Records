@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <div>
         <nav className='navbar'>
-            <img height="60px" width="200px" src={Logo} alt="" />
+            <img height="60px" width="200px" src={Logo} onClick={() => navigate("/record")} alt="" />
             <button onClick={() => navigate("/insert")} className='Insert'>Insert</button>
             <button onClick={() => navigate("/search")} className='Search'>search</button>
             <button onClick={Logout} className='Logout'>Logout</button>
