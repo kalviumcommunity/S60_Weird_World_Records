@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Navbar from "./Navbar";
 
 function Search(){
 
@@ -38,6 +39,7 @@ function Search(){
 
     return(
         <div className="out">
+            <Navbar/>
             <div>
                 <div>
                     <h2>Search</h2>

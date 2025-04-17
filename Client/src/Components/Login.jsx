@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import workspaceImage from "../assets/Workspace.png"
 
@@ -60,6 +60,12 @@ function Login(){
                         <button className="login">Login</button>
                     </form>
                     {errorMessage && <p>{errorMessage}</p>}
+
+                    <p>Dont have an account</p>
+                    <Link to="/">
+                    <button>Signup</button>
+                    </Link>
+
                 </div>
                 <div>
                     <img className="wimg" src={workspaceImage} alt="image" />
