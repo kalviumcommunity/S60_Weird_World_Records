@@ -14,7 +14,7 @@ function UpdateData(){
 
     useEffect(() => {
         const getRecorddata = async() => {
-        axios.get("http://localhost:3001/getid/"+id)
+        axios.get("https://s60-weird-world-records.onrender.com/getid/"+id)
         .then(recordData => {
             // console.log(recordData.data)
             setCategory(recordData.data.Record_category)
@@ -49,10 +49,10 @@ function UpdateData(){
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.put("http://localhost:3001/put/"+id, {Record_category, Record_Name, Record_Holder_Name, Record_Picture, Record_Details})
+        axios.put("https://s60-weird-world-records.onrender.com/put/"+id, {Record_category, Record_Name, Record_Holder_Name, Record_Picture, Record_Details})
         .then((/*output*/) => {
             // console.log(output)
-            navigate("/")
+            navigate("/record")
         })
         .catch((err) => {
             console.log('err', err)

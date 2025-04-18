@@ -25,7 +25,7 @@ function Signup(){
     const handleSignup = (event) => {
         event.preventDefault()
         navigate("/record")
-        axios.post("http://localhost:3001/signup", {username, email, password})
+        axios.post("https://s60-weird-world-records.onrender.com/signup", {username, email, password})
         .then(output => {
             console.log(output)
             document.cookie = `email = ${email}; expires Fri, 31 Dec 9999 23:59:59 GMT`
@@ -42,7 +42,7 @@ function Signup(){
                     <form onSubmit={handleSignup}>
                         <input type="text" placeholder="Username" onChange={handleName} required /><br />
                         <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
-                        <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
+                        <input type="password" placeholder="Password" onChange={handlePassword} required /><br />
                         <button className="signup" onSubmit={handleSignup}>Sign Up</button><br />
                     </form>
                     <p>If you already have an account</p>

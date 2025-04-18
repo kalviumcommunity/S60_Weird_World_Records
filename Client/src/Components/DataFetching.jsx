@@ -11,7 +11,7 @@ function FetchData(){
     useEffect(() => {
         const fetching = async() => {
             try{
-                const recordData = await axios.get("http://localhost:3001/get");
+                const recordData = await axios.get("https://s60-weird-world-records.onrender.com/get");
                 // console.log(recordData.data.arrOfdata)
                 setRecord(recordData.data.arrOfdata)
             }catch(error){
@@ -23,7 +23,7 @@ function FetchData(){
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:3001/delete/${id}`);
+            await axios.delete(`https://s60-weird-world-records.onrender.com/delete/${id}`);
             setRecord(prevRecords => prevRecords.filter(item => item._id !== id));
             console.log("Data deleted successfully");
         } catch(error) {

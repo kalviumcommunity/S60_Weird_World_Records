@@ -49,7 +49,7 @@ function InsertData(){
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post("http://localhost:3001/post", {Record_category, Record_Name, Record_Holder_Name, Record_Picture, Record_Details, Added_by})
+        axios.post("https://s60-weird-world-records.onrender.com/post", {Record_category, Record_Name, Record_Holder_Name, Record_Picture, Record_Details, Added_by})
         .then((/*output*/) => {
             // console.log(output)
             navigate("/record")

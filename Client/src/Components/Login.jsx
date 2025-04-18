@@ -30,7 +30,7 @@ function Login(){
     const handleLogin = (event) => {
         event.preventDefault()
 
-        axios.post("http://localhost:3001/login", { email, password, username })
+        axios.post("https://s60-weird-world-records.onrender.com/login", { email, password, username })
         .then(output => {
             console.log(output)
             if(output.data.success === "Login successful"){
@@ -56,7 +56,7 @@ function Login(){
                     <form onSubmit={handleLogin}>
                         <input type="text" placeholder="Username" onChange={handleUserName} required /><br />
                         <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
-                        <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
+                        <input type="password" placeholder="Password" onChange={handlePassword} required /><br />
                         <button className="login">Login</button>
                     </form>
                     {errorMessage && <p>{errorMessage}</p>}
