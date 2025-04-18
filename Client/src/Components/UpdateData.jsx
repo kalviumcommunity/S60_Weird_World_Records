@@ -14,7 +14,7 @@ function UpdateData(){
 
     useEffect(() => {
         const getRecorddata = async() => {
-        axios.get("http://localhost:3001/getid/"+id)
+        axios.get("https://s60-weird-world-records.onrender.com/getid/"+id)
         .then(recordData => {
             // console.log(recordData.data)
             setCategory(recordData.data.Record_category)

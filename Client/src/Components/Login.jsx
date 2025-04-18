@@ -56,7 +56,7 @@ function Login(){
                     <form onSubmit={handleLogin}>
                         <input type="text" placeholder="Username" onChange={handleUserName} required /><br />
                         <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
-                        <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
+                        <input type="password" placeholder="Password" onChange={handlePassword} required /><br />
                         <button className="login">Login</button>
                     </form>
                     {errorMessage && <p>{errorMessage}</p>}

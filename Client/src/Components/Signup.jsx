@@ -42,7 +42,7 @@ function Signup(){
                     <form onSubmit={handleSignup}>
                         <input type="text" placeholder="Username" onChange={handleName} required /><br />
                         <input type="text" placeholder="Email" onChange={handleEmail} required /><br />
-                        <input type="text" placeholder="Password" onChange={handlePassword} required /><br />
+                        <input type="password" placeholder="Password" onChange={handlePassword} required /><br />
                         <button className="signup" onSubmit={handleSignup}>Sign Up</button><br />
                     </form>
                     <p>If you already have an account</p>
