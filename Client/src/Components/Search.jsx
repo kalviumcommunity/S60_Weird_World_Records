@@ -11,7 +11,7 @@ function Search(){
     useEffect(() => {
         const fetchUsers = async() => {
             try{
-                const dataUsers = await axios.get("http://localhost:3001/signup")
+                const dataUsers = await axios.get("https://s60-weird-world-records.onrender.com/signup")
                 setUser(dataUsers.data.arrOfUsers)
             }catch(error){
                 console.log(error)
@@ -23,7 +23,7 @@ function Search(){
     useEffect(() => {
         const fetching = async() => {
             try{
-                const recordData = await axios.get("http://localhost:3001/get");
+                const recordData = await axios.get("https://s60-weird-world-records.onrender.com/get");
                 setRecord(recordData.data.arrOfdata)
             }catch(error){
                 console.log("error", error)
